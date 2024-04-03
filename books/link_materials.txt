@@ -1,3 +1,6 @@
 example(cmake pybind11)
 https://github.com/smrfeld/advanced_pybind11_features
 
+лань
+https://reader.lanbook.com/book/129041#103
+
