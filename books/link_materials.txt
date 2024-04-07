@@ -4,3 +4,9 @@ https://github.com/smrfeld/advanced_pybind11_features
 лань
 https://reader.lanbook.com/book/129041#103
 
+
+курс по ЦОС
+https://github.com/hukenovs/dsp-theory
+
+полезный курс
+https://alexgyver.ru/lessons/filters/
