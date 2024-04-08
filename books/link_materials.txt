@@ -21,3 +21,6 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B2%D1%91%D1%80%D1%82%D0%BA%D0%B0_(%D0%BC
 
 преобразования фурье
 https://habr.com/ru/articles/196374/
+
+преобразования фурье вроде норм
+https://proglib.io/p/fourier-transform
