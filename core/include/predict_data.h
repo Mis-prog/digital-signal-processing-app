@@ -1,6 +1,6 @@
 #pragma once
 
-#include <OpenXLSX.hpp>
+#include "../external/OpenXLSX/OpenXLSX/OpenXLSX.hpp"
 #include <string>
 #include <vector>
 

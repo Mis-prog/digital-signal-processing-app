@@ -55,10 +55,10 @@ std::vector<std::string> Processing::get_name_columns(std::string name_sheet) {
         auto sheet = doc.workbook().worksheet(name_sheet);
 
         for (int j = 2; j <= sheet.columnCount(); j++) {
-            auto cellValue = sheet.cell(1, j).value().get<std::string>();
+//            auto cellValue = sheet.cell(1, j).value().get<std::string>();
 
 
-            name_columns.push_back(cellValue);
+//            name_columns.push_back(cellValue);
         }
         return name_columns;
     }
@@ -84,7 +84,7 @@ void Processing::get_index() {
         for (int index_column = 1; index_column <= data_book.second.size(); index_column++) {
 
             for (int index_value = 2; index_value <= count_value; index_value++) {
-                std::cout << value.cell(index_value,index_column).type();
+//                std::cout << value.cell(index_value,index_column).type();
             }
         }
     }
