@@ -1,0 +1,7 @@
+pandas
+numpy 
+pyqt6 
+pyqt-tools
+scikit-learn
+matplotlib
+openpyxl
