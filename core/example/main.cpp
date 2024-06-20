@@ -3,7 +3,7 @@
 int main() {
     SetConsoleOutputCP(CP_UTF8);
 
-    Processing data("data.xlsx");
+    Processing data("data_big.xlsx");
     data.read_xlsx();
     data.get_index();
 

@@ -3,3 +3,5 @@ pandas
 matplotlib
 scikit-learn
 pybind11
+pyqt6
+pyqt-tools

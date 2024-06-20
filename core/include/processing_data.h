@@ -10,6 +10,7 @@ struct Data {
 
     std::string name_colums;
     std::vector<std::pair<int, int>> index;
+    std::vector<float> data;
 };
 
 class Processing {
@@ -19,13 +20,15 @@ private:
     const std::string path = "../../data/";
 
     std::string name_file;
-    std::map<std::string, std::vector<Data>> data; // name_sheet,data
+    std::map<std::string, std::vector<Data>> data; // name_sheet, data
 public:
     Processing(std::string name);
 
     void read_xlsx();
 
     void write_xlsx();
+
+    void string_to_value();
 
     std::vector<std::string> get_name_sheet(OpenXLSX::XLDocument &document);
 

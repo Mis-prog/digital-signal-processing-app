@@ -1,14 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 
-find_package(Xlnt CONFIG REQUIRED)
 
 file(GLOB SRCS *.cpp)
 
 #pybind11_add_module(lib example.cpp)
 
-add_library(processing SHARED ${SRCS})
+add_library(processing STATIC ${SRCS})
 
-target_link_libraries(processingм
+target_link_libraries(processing
         PRIVATE
-        xlnt::xlnt
+        OpenXLSX::OpenXLSX
 )
