@@ -8,7 +8,6 @@ def main():
     app = QApplication([])
     model = Model()
     view = View(model)
-    controller = Controller(model, view)
     view.show()
     app.exec()
 

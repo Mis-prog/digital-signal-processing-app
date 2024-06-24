@@ -47,9 +47,9 @@ class Data:
 
     def write_file(self, signals):
         for signal in signals:
-            df = pd.read_excel(self.path, sheet_name=signal.name_sheet)
-            df[signal.name_column] = signal.data
-        df.to_excel(self.path, sheet_name=signal.name_sheet, index=False)
+            df = pd.read_excel(self.path, sheet_name=signal.__name_sheet)
+            df[signal.__name_column] = signal.__data
+        df.to_excel(self.path, sheet_name=signal.__name_sheet, index=False)
 
     def add_signal_in_buffer(self, name, signal):
         if name not in self.buffer.keys():

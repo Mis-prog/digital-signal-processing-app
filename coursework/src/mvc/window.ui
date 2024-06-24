@@ -20,10 +20,10 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
-      <item row="0" column="1">
+      <item row="0" column="0">
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -153,6 +153,15 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>Сигналы:</string>
            </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="textAlignment">
+            <set>AlignLeading|AlignVCenter</set>
+           </property>
           </column>
          </widget>
         </widget>
@@ -232,7 +241,7 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>29</x>
             <y>109</y>
-            <width>1001</width>
+            <width>981</width>
             <height>581</height>
            </rect>
           </property>
@@ -348,10 +357,39 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>19</x>
             <y>99</y>
-            <width>1031</width>
+            <width>801</width>
             <height>601</height>
            </rect>
           </property>
+         </widget>
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="geometry">
+           <rect>
+            <x>840</x>
+            <y>100</y>
+            <width>211</width>
+            <height>591</height>
+           </rect>
+          </property>
+          <column>
+           <property name="text">
+            <string>Промежутки
+разрывов:
+</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+             <strikeout>false</strikeout>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="textAlignment">
+            <set>AlignLeading|AlignTop</set>
+           </property>
+          </column>
          </widget>
          <zorder>label_6</zorder>
          <zorder>comboBox_2</zorder>
@@ -362,6 +400,7 @@ p, li { white-space: pre-wrap; }
          <zorder>pushButton_11</zorder>
          <zorder>pushButton_28</zorder>
          <zorder>eliminating_gaps_widget</zorder>
+         <zorder>tableWidget</zorder>
         </widget>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
@@ -420,8 +459,8 @@ p, li { white-space: pre-wrap; }
           <widget class="QTabWidget" name="tabWidget_2">
            <property name="geometry">
             <rect>
-             <x>-20</x>
-             <y>-100</y>
+             <x>-40</x>
+             <y>-110</y>
              <width>1074</width>
              <height>751</height>
             </rect>
@@ -787,10 +826,38 @@ p, li { white-space: pre-wrap; }
               <rect>
                <x>20</x>
                <y>80</y>
-               <width>1001</width>
+               <width>791</width>
                <height>601</height>
               </rect>
              </property>
+            </widget>
+            <widget class="QTableWidget" name="tableWidget_2">
+             <property name="geometry">
+              <rect>
+               <x>820</x>
+               <y>90</y>
+               <width>211</width>
+               <height>551</height>
+              </rect>
+             </property>
+             <column>
+              <property name="text">
+               <string>Промежутки 
+аномалий:</string>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>9</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+                <strikeout>false</strikeout>
+                <stylestrategy>PreferAntialias</stylestrategy>
+               </font>
+              </property>
+              <property name="textAlignment">
+               <set>AlignLeading|AlignTop</set>
+              </property>
+             </column>
             </widget>
            </widget>
           </widget>

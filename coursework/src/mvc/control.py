@@ -2,6 +2,8 @@ import sys
 from PyQt6.QtWidgets import QMainWindow, QFileDialog
 
 
+
+
 class Controller():
     def __init__(self, model, view):
         self._model = model

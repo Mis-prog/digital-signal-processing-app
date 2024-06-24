@@ -45,11 +45,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             parent.setText(0, sheet)
             for signal in self.data.signals[sheet]:
                 child = QTreeWidgetItem(parent)
-                child.setText(0, signal.name_column)
+                child.setText(0, signal.__name_column)
                 child.setData(0, 1, signal)
 
     def display_selected_signal(self, item):
-        signal = item.data(0, 1)
+        signal = item.__data(0, 1)
         if isinstance(signal, Signal):
             self.signal_name.setText(signal.name_sheet + "/" + signal.name_column)
             self.signal_сurrent = signal
@@ -88,8 +88,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         smoothing_layout.addWidget(toolbar)
         smoothing_layout.addWidget(sc)
 
-        self.smoothing_widget.setLayout(smoothing_layout)
-        self.e
 
 # def get_index_data(self):
 #     if len(self.buffer[self.signal.name_sheet]) == 0:
