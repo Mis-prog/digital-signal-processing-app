@@ -6,6 +6,8 @@ from mysignal import MySignal
 
 class Model:
     def __init__(self):
+        self.signal_current = None
+        self.path_file = None
         self.names_of_sheets_and_columns = None
         self.signal_current = None
         self.path_file = None
@@ -17,8 +19,8 @@ class Model:
         self.connect_name_and_signal()
 
     def add_signal_in_buffer(self):
-        _name = self.signal_current.__name_sheet + "/" + self.signal_current.__name_column
-        if (_name) not in self.buffer_signals.keys():
+        _name = f"{self.signal_current.get_name_sheet()}/{self.signal_current.get_name_column()}"
+        if _name not in self.buffer_signals.keys():
             self.buffer_signals[_name] = self.signal_current
             return True
         return False
@@ -60,7 +62,6 @@ class Model:
     #         with pd.ExcelWriter(self.path_file, mode='a', if_sheet_exists='replace') as writer:
     #             df.to_excel(writer, sheet_name=signal.__name_sheet, index=False)
     #
-
 
 # if __name__ == "__main__":
 #     model = Model()
