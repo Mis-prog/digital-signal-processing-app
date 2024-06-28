@@ -24,3 +24,12 @@ https://habr.com/ru/articles/196374/
 
 преобразования фурье вроде норм
 https://proglib.io/p/fourier-transform
+
+книги
+https://reader.lanbook.com/book/93566#99
+
+поиск аномалий
+- инфа по сглаживанию есть
+https://habr.com/ru/articles/477206/
+- инфа по поиску аномалий
+https://habr.com/ru/articles/477450/

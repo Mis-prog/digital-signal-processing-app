@@ -10,6 +10,21 @@ class MySignal:
         self.__data = None
         self.__diff_data = None
         self.__curr_data = None
+        self.__intervals = []
+
+    def set_intervals(self, intervals):
+        self.__intervals = intervals
+
+    def get_all_intervals(self):
+        return self.__intervals
+
+    def get_index_interval(self):
+        if self.__intervals:
+            index_interval = []
+            for interval in self.__intervals:
+                start, end = interval
+                index_interval.append((start[1], end[1]))
+            return index_interval
 
     def get_name_sheet(self):
         return self.__name_sheet
@@ -20,6 +35,7 @@ class MySignal:
     def set_data(self):
         self.__data = pd.read_excel(self.__path, sheet_name=self.__name_sheet)[['MD', self.__name_column]]
         self.__curr_data = self.__data
+        self.__curr_data = self.__curr_data.reset_index(drop=True)
 
     def get_data_original(self):
         if self.__data.empty:
@@ -41,6 +57,7 @@ class MySignal:
 
     def back_signal(self):
         self.__curr_data = self.__diff_data
+        self.__curr_data = self.__curr_data.reset_index(drop=True)
 
     def set_data_start_end_work(self):
         if self.__data.empty:
@@ -58,6 +75,7 @@ class MySignal:
                     _end_node = len(self.__data) - i
                     break
             self.__curr_data = self.__data.iloc[_start_node:_end_node]
+            self.__curr_data = self.__curr_data.reset_index(drop=True)
 
     # Доработать
     # def data_to_index(self, start, end):

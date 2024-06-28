@@ -4,6 +4,9 @@ from PyQt6.QtWidgets import QFileDialog
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QAction
 from mysignal import MySignal
+from plot import MplCanvas
+from filter import all_filter
+from searchanomaly import *
 
 import matplotlib
 
@@ -13,14 +16,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationTool
 from matplotlib.figure import Figure
 
 
-class MplCanvas(FigureCanvasQTAgg):
-
-    def __init__(self, parent=None, width=5, height=4, dpi=100):
-        fig = Figure(figsize=(width, height), dpi=dpi)
-        self.axes = fig.add_subplot(111)
-        super(MplCanvas, self).__init__(fig)
-
-
 class View(QMainWindow, Ui_MainWindow):
     def __init__(self, model, parent=None):
         self.signal_plot = None
@@ -28,11 +23,78 @@ class View(QMainWindow, Ui_MainWindow):
         super(View, self).__init__()
         self.setupUi(self)
 
+        self.smoothing_param_window.hide()
+        self.smoothing_param_value_widget.hide()
+
         self.tablewidget_buffer_signals.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.tablewidget_intervals_anomaly.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+
         self.open_dialog.clicked.connect(self.open_file_dialog)
         self.treewidget_all_signals.itemClicked.connect(self.display_selected_signal)
         self.set_signal.clicked.connect(self.set_current_signal)
         self.tablewidget_buffer_signals.customContextMenuRequested.connect(self.show_context_menu)
+        self.tablewidget_intervals_anomaly.customContextMenuRequested.connect(
+            self.show_context_menu_for_tablewidget_anomaly)
+        self.list_filter_smoothing_widget.currentIndexChanged.connect(self.set_filter_widget)
+        self.run_smoothing_widget.clicked.connect(self.plot_filter)
+        self.append_interval.clicked.connect(self.append_interval_anomaly_widget)
+        self.run_analysis_signals.clicked.connect(self.set_analysis_signal)
+        # self.cut_intervals_anomaly.clicked.connect(self.)
+
+    def set_analysis_signal(self):
+        if self.signal_plot and self.list_method_search_anomaly is not None:
+            index = self.list_method_search_anomaly.currentIndex()
+            analysis_anomaly(self.signal_plot, index)
+            _all_interval = self.signal_plot.get_all_intervals()
+            for interval in _all_interval:
+                start, end = interval
+                print(interval)
+                row_position = self.tablewidget_intervals_anomaly.rowCount()
+                self.tablewidget_intervals_anomaly.insertRow(row_position)
+                self.tablewidget_intervals_anomaly.setItem(row_position, 0, QTableWidgetItem(str(start[0])))
+                self.tablewidget_intervals_anomaly.setItem(row_position, 1, QTableWidgetItem(str(end[0])))
+    def append_interval_anomaly_widget(self):
+        row_position = self.tablewidget_intervals_anomaly.rowCount()
+        self.tablewidget_intervals_anomaly.insertRow(row_position)
+
+    def show_context_menu_for_tablewidget_anomaly(self, pos):
+        index = self.tablewidget_intervals_anomaly.indexAt(pos)
+
+        if not index.isValid():
+            return
+
+        context_menu = QMenu(self)
+        # work_action = QAction('Отобразить аномалию', self)
+        delete_action = QAction('Удалить', self)
+
+        # work_action.triggered.connect(lambda: self.work_with_signal(index.row()))
+        delete_action.triggered.connect(lambda: self.delete_interval(index.row()))
+        # context_menu.addAction(work_action)
+        context_menu.addAction(delete_action)
+
+        context_menu.exec(self.tablewidget_intervals_anomaly.mapToGlobal(pos))
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_Return or event.key() == Qt.Key.Key_Enter:
+            self.run_smoothing_widget.click()
+
+    def plot_filter(self):
+        if self.signal_plot:
+            layout = self.smoothing_widget.layout()
+            if layout is not None:
+                self.clearLayout(layout)
+            else:
+                layout = QVBoxLayout(self.smoothing_widget)
+                self.smoothing_widget.setLayout(layout)
+
+            self.set_filter()
+            _signal = self.signal_plot
+            plot = MplCanvas(self, width=5, height=4, dpi=100)
+            plot.plot_filter(_signal)
+            toolbar = NavigationToolbar(plot, self)
+
+            layout.addWidget(toolbar)
+            layout.addWidget(plot)
 
     def open_file_dialog(self):
         fileName, _ = QFileDialog.getOpenFileName(self, "Open Excel File", "", "Excel Files (*.xlsx *.xls)")
@@ -40,10 +102,28 @@ class View(QMainWindow, Ui_MainWindow):
         if fileName:
             self._model.buffer_signals.clear()
             self.clear_buffer_signals_widget()
+            self.clear_interval_anomaly_widget()
             self._model.path_file = fileName
             self.show_success_message()
             self._model.init()
             self.set_treewidget()
+
+    def set_filter_widget(self, index):
+        if index != 2 and index != 4:
+            self.smoothing_window_widget.show()
+            self.smoothing_window_value_widget.show()
+            self.smoothing_param_window.hide()
+            self.smoothing_param_value_widget.hide()
+        elif index == 2:
+            self.smoothing_window_widget.hide()
+            self.smoothing_window_value_widget.hide()
+            self.smoothing_param_window.show()
+            self.smoothing_param_value_widget.show()
+        elif index == 4:
+            self.smoothing_window_widget.show()
+            self.smoothing_window_value_widget.show()
+            self.smoothing_param_window.show()
+            self.smoothing_param_value_widget.show()
 
     def show_success_message(self):
         msg = QMessageBox()
@@ -64,10 +144,10 @@ class View(QMainWindow, Ui_MainWindow):
                 _child.setText(0, _signal.get_name_column())
                 _child.setData(0, 1, _signal)
 
-    def display_selected_signal(self, item):    
+    def display_selected_signal(self, item):
         signal = item.data(0, 1)
         if isinstance(signal, MySignal):
-            self.signal_name.setText(signal.get_name_sheet() + "/" + signal.get_name_column())
+            self.signal_name.setText(f"{signal.get_name_sheet()}/{signal.get_name_column()}")
             self._model.signal_current = signal
 
     def set_current_signal(self):
@@ -83,6 +163,12 @@ class View(QMainWindow, Ui_MainWindow):
         for row in range(rows - 1, -1, -1):
             self.tablewidget_buffer_signals.removeRow(row)
 
+    def clear_interval_anomaly_widget(self):
+        rows = self.tablewidget_intervals_anomaly.rowCount()
+
+        for row in range(rows - 1, -1, -1):
+            self.tablewidget_intervals_anomaly.removeRow(row)
+
     def show_context_menu(self, pos):
         index = self.tablewidget_buffer_signals.indexAt(pos)
 
@@ -93,7 +179,6 @@ class View(QMainWindow, Ui_MainWindow):
         work_action = QAction('Отобразить сигнал', self)
         delete_action = QAction('Удалить', self)
 
-        # # Подключаем действия к слотам
         work_action.triggered.connect(lambda: self.work_with_signal(index.row()))
         delete_action.triggered.connect(lambda: self.delete_signal(index.row()))
         context_menu.addAction(work_action)
@@ -101,65 +186,94 @@ class View(QMainWindow, Ui_MainWindow):
 
         context_menu.exec(self.tablewidget_buffer_signals.mapToGlobal(pos))
 
-    def delete_signal(self, row):
-        _name = self.tablewidget_buffer_signals.item(row, 0).text()
-        _signal = self._model.buffer_signals[_name]
-        self.tablewidget_buffer_signals.removeRow(row)
-        self._model.delete_signal_from_buffer(_name)
-        if self.smoothing_widget.layout() is not None and self.signal_plot == _signal:
-            self.clearLayout(self.smoothing_widget.layout())
-            self.clearLayout(self.eliminating_gaps_widget.layout())
-            self.clearLayout(self.anomaly_search_widget.layout())
-
     def work_with_signal(self, row):
-        if self.smoothing_widget.layout() is not None:
-            self.clearLayout(self.smoothing_widget.layout())
-        else:
-            self.smoothing_widget.setLayout(QVBoxLayout())
+        try:
+            self.clear_interval_anomaly_widget()
+            _name = self.tablewidget_buffer_signals.item(row, 0).text()
+            _signal = self._model.buffer_signals[_name]
+            _signal.set_data()
+            _signal.set_data_start_end_work()
+            self.signal_plot = _signal
 
-        if self.eliminating_gaps_widget.layout() is not None:
-            self.clearLayout(self.eliminating_gaps_widget.layout())
-        else:
-            self.eliminating_gaps_widget.setLayout(QVBoxLayout())
+            widgets = [self.smoothing_widget, self.eliminating_gaps_widget, self.search_anomaly_widget]
 
-        if self.anomaly_search_widget.layout() is not None:
-            self.clearLayout(self.anomaly_search_widget.layout())
-        else:
-            self.anomaly_search_widget.setLayout(QVBoxLayout())
+            for widget in widgets:
+                layout = widget.layout()
+                if layout is not None:
+                    self.clearLayout(layout)
+                else:
+                    layout = QVBoxLayout(widget)
+                    widget.setLayout(layout)
 
-        _name = self.tablewidget_buffer_signals.item(row, 0).text()
-        _signal = self._model.buffer_signals[_name]
-        _signal.set_data()
-        _signal.set_data_start_end_work()
-        self.signal_plot = _signal
+                plot = MplCanvas(self, width=5, height=4, dpi=100)
+                plot.plot_original(_signal)
+                toolbar = NavigationToolbar(plot, self)
 
-        _data = _signal.get_data_curr()
+                layout.addWidget(toolbar)
+                layout.addWidget(plot)
+        except Exception as e:
+            print(f"Error in work_with_signal: {e}")
 
-        sc1 = MplCanvas(self, width=5, height=4, dpi=100)
-        sc2 = MplCanvas(self, width=5, height=4, dpi=100)
-        sc3 = MplCanvas(self, width=5, height=4, dpi=100)
-        sc1.axes.plot(_data['MD'], _data[_signal.get_name_column()])
-        sc2.axes.plot(_data['MD'], _data[_signal.get_name_column()])
-        sc3.axes.plot(_data['MD'], _data[_signal.get_name_column()])
+    def delete_signal(self, row):
+        try:
+            _name = self.tablewidget_buffer_signals.item(row, 0).text()
+            _signal = self._model.buffer_signals[_name]
 
-        toolbar1 = NavigationToolbar(sc1, self)
-        toolbar2 = NavigationToolbar(sc2, self)
-        toolbar3 = NavigationToolbar(sc3, self)
+            self.tablewidget_buffer_signals.removeRow(row)
+            self._model.delete_signal_from_buffer(_name)
 
-        layout_1 = self.smoothing_widget.layout()
-        layout_1.addWidget(toolbar1)
-        layout_1.addWidget(sc1)
-
-        layout_2 = self.eliminating_gaps_widget.layout()
-        layout_2.addWidget(toolbar2)
-        layout_2.addWidget(sc2)
-
-        layout_3 = self.anomaly_search_widget.layout()
-        layout_3.addWidget(toolbar3)
-        layout_3.addWidget(sc3)
+            if self.signal_plot == _signal:
+                for widget in [self.smoothing_widget, self.eliminating_gaps_widget, self.search_anomaly_widget]:
+                    layout = widget.layout()
+                    if layout is not None:
+                        self.clearLayout(layout)
+                self.signal_plot = None
+        except Exception as e:
+            print(f"Error in delete_signal: {e}")
 
     def clearLayout(self, layout):
-        while layout.count():
-            child = layout.takeAt(0)
-            if child.widget() is not None:
-                child.widget().setParent(None)
+        if layout is not None:
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
+
+    def set_filter(self):
+        value = None
+        param = None
+        index = self.list_filter_smoothing_widget.currentIndex()
+
+        if index != 2 and index != 4:
+            if self.smoothing_window_value_widget is not None:
+                value = int(self.smoothing_window_value_widget.value())
+
+            if value != 0:
+                all_filter[index](self.signal_plot, value)
+            else:
+                all_filter[index](self.signal_plot, 101)
+                self.smoothing_window_value_widget.setValue(101)
+
+        elif index == 2:
+            if self.smoothing_param_value_widget is not None:
+                param = float(self.smoothing_param_value_widget.value())
+
+            if param != 0 and param <= 1:
+                all_filter[2](self.signal_plot, param)
+            else:
+                all_filter[2](self.signal_plot, 0.5)
+                self.smoothing_param_value_widget.setValue(0.5)
+        elif index == 4:
+
+            if self.smoothing_window_value_widget is not None and self.smoothing_param_value_widget.value is not None:
+                value = int(self.smoothing_window_value_widget.value())
+                param = float(self.smoothing_param_value_widget.value())
+
+            if value != 0 and param != 0:
+                all_filter[index](self.signal_plot, value, param)
+            else:
+                all_filter[index](self.signal_plot, 101, 5.0)
+                self.smoothing_window_value_widget.setValue(101)
+                self.smoothing_param_value_widget.setValue(5.0)
+
+    def delete_interval(self, row):
+        self.tablewidget_intervals_anomaly.removeRow(row)

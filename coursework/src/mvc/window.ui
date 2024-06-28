@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <layout class="QGridLayout" name="gridLayout">
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
@@ -23,875 +23,375 @@
       <item row="0" column="0">
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
           <string>Данные</string>
          </attribute>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>860</x>
-            <y>20</y>
-            <width>167</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string> Файл с коротажной прямой</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="open_dialog">
-          <property name="geometry">
-           <rect>
-            <x>860</x>
-            <y>50</y>
-            <width>181</width>
-            <height>61</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Выбрать файл</string>
-          </property>
-         </widget>
-         <widget class="QTreeWidget" name="treewidget_all_signals">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>20</y>
-            <width>801</width>
-            <height>681</height>
-           </rect>
-          </property>
-          <column>
-           <property name="text">
-            <string>Название листа:</string>
-           </property>
-          </column>
-         </widget>
-         <widget class="QLineEdit" name="signal_name">
-          <property name="geometry">
-           <rect>
-            <x>860</x>
-            <y>160</y>
-            <width>171</width>
-            <height>31</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="set_signal">
-          <property name="geometry">
-           <rect>
-            <x>860</x>
-            <y>200</y>
-            <width>171</width>
-            <height>61</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Добавить</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="save_file">
-          <property name="geometry">
-           <rect>
-            <x>870</x>
-            <y>650</y>
-            <width>171</width>
-            <height>61</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Сохранить</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_13">
-          <property name="geometry">
-           <rect>
-            <x>860</x>
-            <y>140</y>
-            <width>171</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Текущий сигнал:</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_14">
-          <property name="geometry">
-           <rect>
-            <x>870</x>
-            <y>270</y>
-            <width>171</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="1">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string> Файл с коротажной прямой</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" rowspan="8">
+           <widget class="QTreeWidget" name="treewidget_all_signals">
+            <column>
+             <property name="text">
+              <string>Название листа:</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="open_dialog">
+            <property name="text">
+             <string>Выбрать файл</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="signal_name"/>
+          </item>
+          <item row="4" column="1">
+           <widget class="QPushButton" name="set_signal">
+            <property name="text">
+             <string>Добавить</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Выбранные сигналы:&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-         <widget class="QTableWidget" name="tablewidget_buffer_signals">
-          <property name="geometry">
-           <rect>
-            <x>870</x>
-            <y>290</y>
-            <width>171</width>
-            <height>281</height>
-           </rect>
-          </property>
-          <property name="defaultDropAction">
-           <enum>Qt::IgnoreAction</enum>
-          </property>
-          <column>
-           <property name="text">
-            <string>Сигналы:</string>
-           </property>
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="textAlignment">
-            <set>AlignLeading|AlignVCenter</set>
-           </property>
-          </column>
-         </widget>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QTableWidget" name="tablewidget_buffer_signals">
+            <property name="defaultDropAction">
+             <enum>Qt::IgnoreAction</enum>
+            </property>
+            <column>
+             <property name="text">
+              <string>Сигналы:</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QPushButton" name="save_file">
+            <property name="text">
+             <string>Сохранить</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Текущий сигнал:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="tab_2">
          <attribute name="title">
           <string>Сглаживание данных</string>
          </attribute>
-         <widget class="QComboBox" name="comboBox">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>50</y>
-            <width>171</width>
-            <height>22</height>
-           </rect>
-          </property>
-          <item>
-           <property name="text">
-            <string>Скользящего среднего</string>
-           </property>
-          </item>
-         </widget>
-         <widget class="QLabel" name="label_2">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>30</y>
-            <width>131</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Метод сглаживание:</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_6">
-          <property name="geometry">
-           <rect>
-            <x>210</x>
-            <y>50</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Выполнить </string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_8">
-          <property name="geometry">
-           <rect>
-            <x>310</x>
-            <y>50</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Назад</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_29">
-          <property name="geometry">
-           <rect>
-            <x>410</x>
-            <y>50</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Применить</string>
-          </property>
-         </widget>
          <widget class="QWidget" name="smoothing_widget" native="true">
           <property name="geometry">
            <rect>
-            <x>29</x>
-            <y>109</y>
-            <width>981</width>
-            <height>581</height>
+            <x>9</x>
+            <y>79</y>
+            <width>1041</width>
+            <height>621</height>
            </rect>
           </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>11</y>
+            <width>720</width>
+            <height>53</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="1" column="2">
+            <widget class="QSpinBox" name="smoothing_window_value_widget">
+             <property name="maximum">
+              <number>1000</number>
+             </property>
+             <property name="value">
+              <number>0</number>
+             </property>
+             <property name="displayIntegerBase">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="smoothing_window_widget">
+             <property name="text">
+              <string>Ширина окна:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QDoubleSpinBox" name="smoothing_param_value_widget">
+             <property name="maximum">
+              <double>100.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.010000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLabel" name="smoothing_param_window">
+             <property name="text">
+              <string>Подбор параметра:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Метод сглаживание:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="run_smoothing_widget">
+             <property name="text">
+              <string>Выполнить </string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QComboBox" name="list_filter_smoothing_widget">
+             <item>
+              <property name="text">
+               <string>Метод скользящего среднего </string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Медианный фильтр </string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Экспонитациональный фильтр</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Окно Хэмминга</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Окно Гаусса</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
         <widget class="QWidget" name="tab_4">
          <attribute name="title">
           <string>Устранение разрывов</string>
          </attribute>
-         <widget class="QLabel" name="label_3">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>20</y>
-            <width>121</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Показать разрывы:</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>10</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Да</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_6">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>40</y>
-            <width>141</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Метод востановление:</string>
-          </property>
-         </widget>
-         <widget class="QComboBox" name="comboBox_2">
-          <property name="geometry">
-           <rect>
-            <x>150</x>
-            <y>40</y>
-            <width>191</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="geometry">
-           <rect>
-            <x>350</x>
-            <y>40</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Выполнить </string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_9">
-          <property name="geometry">
-           <rect>
-            <x>240</x>
-            <y>10</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Нет </string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_11">
-          <property name="geometry">
-           <rect>
-            <x>450</x>
-            <y>40</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Назад</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_28">
-          <property name="geometry">
-           <rect>
-            <x>550</x>
-            <y>40</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Применить</string>
-          </property>
-         </widget>
          <widget class="QWidget" name="eliminating_gaps_widget" native="true">
           <property name="geometry">
            <rect>
-            <x>19</x>
-            <y>99</y>
-            <width>801</width>
-            <height>601</height>
+            <x>11</x>
+            <y>65</y>
+            <width>631</width>
+            <height>646</height>
            </rect>
           </property>
          </widget>
-         <widget class="QTableWidget" name="tableWidget">
+         <widget class="QTableWidget" name="tableWidget_2">
           <property name="geometry">
            <rect>
-            <x>840</x>
-            <y>100</y>
-            <width>211</width>
-            <height>591</height>
+            <x>660</x>
+            <y>60</y>
+            <width>381</width>
+            <height>651</height>
            </rect>
           </property>
           <column>
            <property name="text">
-            <string>Промежутки
-разрывов:
-</string>
-           </property>
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <italic>false</italic>
-             <bold>true</bold>
-             <strikeout>false</strikeout>
-             <kerning>true</kerning>
-            </font>
-           </property>
-           <property name="textAlignment">
-            <set>AlignLeading|AlignTop</set>
+            <string>Промежутки 
+аномалий:</string>
            </property>
           </column>
          </widget>
-         <zorder>label_6</zorder>
-         <zorder>comboBox_2</zorder>
-         <zorder>pushButton_5</zorder>
-         <zorder>label_3</zorder>
-         <zorder>pushButton_2</zorder>
-         <zorder>pushButton_9</zorder>
-         <zorder>pushButton_11</zorder>
-         <zorder>pushButton_28</zorder>
-         <zorder>eliminating_gaps_widget</zorder>
-         <zorder>tableWidget</zorder>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>12</y>
+            <width>369</width>
+            <height>55</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Метод  востановления разрыва :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <layout class="QGridLayout" name="gridLayout_6">
+             <item row="0" column="0">
+              <widget class="QComboBox" name="comboBox_4">
+               <item>
+                <property name="text">
+                 <string>Сплайнами</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="pushButton_8">
+               <property name="text">
+                <string>Выполнить </string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="pushButton_26">
+               <property name="text">
+                <string>Применить</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
           <string>Устранение аномалий</string>
          </attribute>
-         <widget class="QLabel" name="label_5">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>20</y>
-            <width>161</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Метод  поиска аномалий:</string>
-          </property>
-         </widget>
-         <widget class="QComboBox" name="comboBox_3">
-          <property name="geometry">
-           <rect>
-            <x>170</x>
-            <y>20</y>
-            <width>171</width>
-            <height>22</height>
-           </rect>
-          </property>
-          <item>
-           <property name="text">
-            <string>Скользящего среднего</string>
-           </property>
+         <layout class="QGridLayout" name="gridLayout_13">
+          <item row="2" column="3">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Промежутки аномалий:</string>
+            </property>
+           </widget>
           </item>
-         </widget>
-         <widget class="QPushButton" name="pushButton_7">
-          <property name="geometry">
-           <rect>
-            <x>350</x>
-            <y>20</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Выполнить </string>
-          </property>
-         </widget>
-         <widget class="QWidget" name="widget_3" native="true">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>90</y>
-            <width>1001</width>
-            <height>561</height>
-           </rect>
-          </property>
-          <widget class="QTabWidget" name="tabWidget_2">
-           <property name="geometry">
-            <rect>
-             <x>-40</x>
-             <y>-110</y>
-             <width>1074</width>
-             <height>751</height>
-            </rect>
-           </property>
-           <property name="currentIndex">
-            <number>3</number>
-           </property>
-           <widget class="QWidget" name="tab_5">
-            <attribute name="title">
-             <string>Данные</string>
-            </attribute>
-            <widget class="QLabel" name="label_7">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>167</width>
-               <height>28</height>
-              </rect>
-             </property>
+          <item row="3" column="0" rowspan="2" colspan="3">
+           <widget class="QWidget" name="search_anomaly_widget" native="true"/>
+          </item>
+          <item row="4" column="3" colspan="2">
+           <widget class="QTableWidget" name="tablewidget_intervals_anomaly">
+            <property name="editTriggers">
+             <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <column>
              <property name="text">
-              <string> Файл с коротажной прямой</string>
+              <string>От:</string>
              </property>
-            </widget>
-            <widget class="QLineEdit" name="lineEdit_3">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>20</y>
-               <width>820</width>
-               <height>22</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_13">
-             <property name="geometry">
-              <rect>
-               <x>820</x>
-               <y>20</y>
-               <width>94</width>
-               <height>28</height>
-              </rect>
-             </property>
+            </column>
+            <column>
              <property name="text">
-              <string>Выбрать файл</string>
+              <string>До:</string>
              </property>
-            </widget>
-            <widget class="QTreeWidget" name="treeWidget_2">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>60</y>
-               <width>801</width>
-               <height>641</height>
-              </rect>
-             </property>
-             <column>
+            </column>
+           </widget>
+          </item>
+          <item row="0" column="0" rowspan="2">
+           <layout class="QGridLayout" name="gridLayout_11">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_5">
               <property name="text">
-               <string>Название листа:</string>
+               <string>Метод  поиска аномалий:</string>
               </property>
-             </column>
-             <item>
-              <property name="text">
-               <string>eqweq</string>
-              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QComboBox" name="list_method_search_anomaly">
               <item>
                <property name="text">
-                <string>New Subitem</string>
+                <string>Скользящего среднего</string>
                </property>
               </item>
-             </item>
-            </widget>
-            <widget class="QLineEdit" name="lineEdit_4">
-             <property name="geometry">
-              <rect>
-               <x>820</x>
-               <y>60</y>
-               <width>113</width>
-               <height>22</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_14">
-             <property name="geometry">
-              <rect>
-               <x>950</x>
-               <y>60</y>
-               <width>101</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Выбрать сигнал</string>
-             </property>
-            </widget>
-           </widget>
-           <widget class="QWidget" name="tab_6">
-            <attribute name="title">
-             <string>Сглаживание данных</string>
-            </attribute>
-            <widget class="QComboBox" name="comboBox_4">
-             <property name="geometry">
-              <rect>
-               <x>170</x>
-               <y>30</y>
-               <width>73</width>
-               <height>22</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label_8">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>131</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Метод сглаживание:</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_15">
-             <property name="geometry">
-              <rect>
-               <x>250</x>
-               <y>30</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Выполнить </string>
-             </property>
-            </widget>
-            <widget class="QWidget" name="widget_4" native="true">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>100</y>
-               <width>1001</width>
-               <height>561</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_16">
-             <property name="geometry">
-              <rect>
-               <x>350</x>
-               <y>30</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Назад</string>
-             </property>
-            </widget>
-           </widget>
-           <widget class="QWidget" name="tab_7">
-            <attribute name="title">
-             <string>Устранение разрывов</string>
-            </attribute>
-            <widget class="QLabel" name="label_9">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>10</y>
-               <width>121</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Выделить разрывы</string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label_10">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>40</y>
-               <width>121</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Устранить разрывы</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_17">
-             <property name="geometry">
-              <rect>
-               <x>140</x>
-               <y>10</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Выполнить </string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_18">
-             <property name="geometry">
-              <rect>
-               <x>140</x>
-               <y>40</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Выполнить </string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label_11">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>80</y>
-               <width>141</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Метод востановление:</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="comboBox_5">
-             <property name="geometry">
-              <rect>
-               <x>160</x>
-               <y>80</y>
-               <width>73</width>
-               <height>22</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_19">
-             <property name="geometry">
-              <rect>
-               <x>250</x>
-               <y>80</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Выполнить </string>
-             </property>
-            </widget>
-            <widget class="QWidget" name="widget_5" native="true">
-             <property name="geometry">
-              <rect>
-               <x>39</x>
-               <y>129</y>
-               <width>1001</width>
-               <height>561</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_20">
-             <property name="geometry">
-              <rect>
-               <x>240</x>
-               <y>10</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Назад</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_21">
-             <property name="geometry">
-              <rect>
-               <x>240</x>
-               <y>40</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Назад</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_22">
-             <property name="geometry">
-              <rect>
-               <x>350</x>
-               <y>80</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Назад</string>
-             </property>
-            </widget>
-           </widget>
-           <widget class="QWidget" name="tab_8">
-            <attribute name="title">
-             <string>Устранение аномалий</string>
-            </attribute>
-            <widget class="QLabel" name="label_12">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>20</y>
-               <width>161</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Метод  поиска аномалий:</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="comboBox_6">
-             <property name="geometry">
-              <rect>
-               <x>170</x>
-               <y>20</y>
-               <width>171</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <item>
+              <item>
+               <property name="text">
+                <string>Окно Хэмминга</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="run_analysis_signals">
               <property name="text">
-               <string>Скользящего среднего</string>
+               <string>Анализ</string>
               </property>
-             </item>
-            </widget>
-            <widget class="QPushButton" name="pushButton_23">
-             <property name="geometry">
-              <rect>
-               <x>350</x>
-               <y>20</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Выполнить </string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_24">
-             <property name="geometry">
-              <rect>
-               <x>450</x>
-               <y>20</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Назад</string>
-             </property>
-            </widget>
-            <widget class="QWidget" name="anomaly_search_widget" native="true">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>80</y>
-               <width>791</width>
-               <height>601</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QTableWidget" name="tableWidget_2">
-             <property name="geometry">
-              <rect>
-               <x>820</x>
-               <y>90</y>
-               <width>211</width>
-               <height>551</height>
-              </rect>
-             </property>
-             <column>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="cut_intervals_anomaly">
               <property name="text">
-               <string>Промежутки 
-аномалий:</string>
+               <string>Вырезать</string>
               </property>
-              <property name="font">
-               <font>
-                <pointsize>9</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-                <strikeout>false</strikeout>
-                <stylestrategy>PreferAntialias</stylestrategy>
-               </font>
-              </property>
-              <property name="textAlignment">
-               <set>AlignLeading|AlignTop</set>
-              </property>
-             </column>
-            </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="4">
+           <widget class="QPushButton" name="append_interval">
+            <property name="text">
+             <string>Добавить интервал</string>
+            </property>
            </widget>
-          </widget>
-         </widget>
-         <widget class="QPushButton" name="pushButton_12">
-          <property name="geometry">
-           <rect>
-            <x>450</x>
-            <y>20</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Назад</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_25">
-          <property name="geometry">
-           <rect>
-            <x>550</x>
-            <y>20</y>
-            <width>93</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Применить</string>
-          </property>
-         </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="0" column="0">
+     <widget class="QComboBox" name="comboBox">
+      <item>
+       <property name="text">
+        <string>Python</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>C++</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>C++(OpenMP)</string>
+       </property>
+      </item>
+     </widget>
     </item>
    </layout>
   </widget>

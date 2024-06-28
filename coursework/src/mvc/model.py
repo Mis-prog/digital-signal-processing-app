@@ -13,6 +13,7 @@ class Model:
         self.path_file = None
         self.buffer_signals = {}
         self.all_signals = {}
+        self.diff_signals = {}
 
     def init(self):
         self.set_cache_file()
